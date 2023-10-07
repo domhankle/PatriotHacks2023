@@ -1,4 +1,4 @@
-package main.java.backend.components;
+package backend.components;
 
 import java.util.ArrayList;
 

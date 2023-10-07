@@ -1,4 +1,4 @@
-package main.java.backend.controllers;
+package backend.controllers;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CorsConfig {
     
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/goals/prompt").allowedOrigins("http://localhost:4200").allowedMethods("GET", "PUT", "DELETE","POST");
+        registry.addMapping("/goals/prompt").allowedOrigins("http://localhost:4200").allowedMethods("GET", "PUT", "DELETE","POST").allowCredentials(true);
     }
 }

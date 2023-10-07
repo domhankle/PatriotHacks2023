@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { Goal } from '../goal/goal';
 import { GoalService } from '../goal.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -15,14 +14,18 @@ export class AddGoalDialogComponent {
     @Inject(MatDialogRef<AddGoalDialogComponent>)
     private _dialogRef: MatDialogRef<AddGoalDialogComponent>
   ) {
-    this.prompt = '';
+    this.prompt = 'SEXY MAN';
   }
 
   public async createNewGoal(): Promise<void> {
-    await this._goalService.addGoal(this.prompt).subscribe((response) => {
-      this._dialogRef.close();
-    });
-
+    await this._goalService.addGoal(this.prompt).subscribe(
+      (response) => {
+        this._dialogRef.close(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     return Promise.resolve();
   }
 
