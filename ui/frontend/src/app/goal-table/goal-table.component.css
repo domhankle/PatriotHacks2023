@@ -1,7 +1,25 @@
 
 .goal-table-component-container{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
     .goals-container{
-        width: auto;
+        min-width: 80%;
+
         margin: 50px
+    }
+
+    .no-goals-text-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .no-goals-text{
+            color: rgb(138, 138, 138);
+            font-size: 20px;
+            font-weight: 500;
+        }
     }
 }

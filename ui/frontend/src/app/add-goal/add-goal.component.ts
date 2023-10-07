@@ -11,8 +11,12 @@ export class AddGoalComponent {
   constructor(private dialogService: MatDialog) {}
 
   public openAddGoalDialog(): void {
-    this.dialogService.open(AddGoalDialogComponent, {
-      data: { message: 'Hello from AddGoalDialogComponent' },
+    const dialogRef = this.dialogService.open(AddGoalDialogComponent, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 }
