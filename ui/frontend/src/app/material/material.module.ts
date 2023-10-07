@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [],
   imports: [
@@ -12,7 +13,14 @@ import { MatTableModule } from '@angular/material/table';
     MatDialogModule,
     MatIconModule,
     MatTableModule,
+    MatCardModule,
   ],
-  exports: [MatButtonModule, MatDialogModule, MatIconModule, MatTableModule],
+  exports: [
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTableModule,
+    MatCardModule,
+  ],
 })
 export class MaterialModule {}
