@@ -19,12 +19,12 @@ public class DynamoDBEnhanced {
             .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
             .build();
 
-        try (
+        try {
             DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
-                .dynamoDbCliend(ddb);
+                .dynamoDbClient(ddb)
                 .build();
             
-        ) catch (DynamoDbException e) {
+        } catch (DynamoDbException e) {
             System.err.println(e.getMessage());
             System.exit(1);
         }
