@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 public class GoalController {
 
     @PostMapping("/prompt")
-    void processPrompt() {
+    void processPrompt(String prompt) {
         // Replace these with your AWS access key ID and secret access key
     }
 
