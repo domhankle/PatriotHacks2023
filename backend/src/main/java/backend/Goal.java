@@ -1,3 +1,5 @@
+package backend;
+
 import java.util.ArrayList;
 
 public class Goal {
@@ -13,8 +15,8 @@ public class Goal {
     public Goal(String name, String prompt) {
         this.name = name;
         this.prompt = prompt;
-        advice = "";
-        steps = new String[];
+        this.advice = "";
+        this.steps = new ArrayList<String>();
     }
 
     public String getName() {
