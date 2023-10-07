@@ -8,6 +8,8 @@ import { AddGoalModule } from './add-goal/add-goal.module';
 import { HeaderModule } from './header/header.module';
 import { GoalTableComponent } from './goal-table/goal-table.component';
 import { GoalTableModule } from './goal-table/goal-table.module';
+import { HttpClientModule } from '@angular/common/http';
+import { GoalService } from './goal.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +20,9 @@ import { GoalTableModule } from './goal-table/goal-table.module';
     AddGoalModule,
     HeaderModule,
     GoalTableModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [GoalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
