@@ -11,5 +11,10 @@ export class GoalTableComponent {
 
   constructor() {
     this.currentGoals = [];
+    let goal = {
+      title: 'Goal Title',
+      description: 'Goal description',
+      steps: [],
+    };
   }
 }

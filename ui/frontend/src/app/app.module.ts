@@ -6,10 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddGoalModule } from './add-goal/add-goal.module';
 import { HeaderModule } from './header/header.module';
-import { GoalTableComponent } from './goal-table/goal-table.component';
 import { GoalTableModule } from './goal-table/goal-table.module';
-import { HttpClientModule } from '@angular/common/http';
 import { GoalService } from './goal.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
