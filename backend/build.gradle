@@ -24,6 +24,7 @@ dependencies {
 	implementation platform("software.amazon.awssdk:bom:2.20.45")
     
     implementation 'software.amazon.awssdk:dynamodb-enhanced'
+    implementation 'software.amazon.awssdk:aws-sdk-java:2.20.45'
 }
 
 tasks.named('test') {
