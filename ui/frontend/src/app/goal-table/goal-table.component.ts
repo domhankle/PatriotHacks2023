@@ -12,8 +12,4 @@ export class GoalTableComponent {
   constructor() {
     this.currentGoals = [];
   }
-
-  generateGoals() {
-    
-  }
 }
