@@ -1,0 +1,9 @@
+
+<div class="goal-table-component-container">
+    <div class="goals-container" *ngFor="let goal of currentGoals">
+        <app-goal class="goal">
+
+        </app-goal>
+    </div>
+    <div *ngIf="currentGoals.length === 0">You Have No Goals Right Now</div>
+</div>

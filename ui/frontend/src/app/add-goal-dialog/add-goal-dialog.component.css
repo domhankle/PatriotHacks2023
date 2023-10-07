@@ -1,0 +1,27 @@
+
+    .dialog-header{
+        background-color: #ff4081;
+        color: white;
+    }
+
+    .dialog-action-buttons-container{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .dialog-content-container{
+
+        .subtitle{
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: black;
+        }
+
+        .text-box{
+            resize: none;
+            width: 100%;
+            min-height: 200px;
+            font-size: 20px;
+            outline-color: black;
+        }
+    }

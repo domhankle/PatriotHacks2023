@@ -1,0 +1,11 @@
+<h1 mat-dialog-title class="dialog-header">+ New Goal</h1>
+
+<div mat-dialog-content class="dialog-content-container">
+    <h2 class="subtitle">Enter a summary of the goal you wish to accomplish below...</h2>
+    <textarea class="text-box"></textarea>
+</div>
+
+<div mat-dialog-actions class="dialog-action-buttons-container">
+    <button mat-button color="accent" class="cancel-button">Cancel</button>
+    <button mat-raised-button color="accent" class="submit-button" (click)="createNewGoal()">Submit</button>
+</div>
