@@ -47,6 +47,7 @@ public class GoalController {
 
     @PostMapping("/prompt")
     void processPrompt(@RequestBody Prompt prompt) {
+<<<<<<< HEAD
 
 
         OpenAiService service = new OpenAiService("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");
@@ -56,6 +57,9 @@ public class GoalController {
             .n(1)
             .build();
         service.createCompletion(completionRequest).getChoices().forEach(System.out::println);
+=======
+        System.out.println(prompt);
+>>>>>>> 448a858b8e28cf912b815078bedd37504e36c282
     }
 
     @GetMapping("/all")
