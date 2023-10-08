@@ -7,8 +7,12 @@
 
     .goals-container{
         min-width: 80%;
+        
+        margin: 5px;
 
-        margin: 50px
+        :hover{
+            cursor: pointer;
+        }
     }
 
     .no-goals-text-container{

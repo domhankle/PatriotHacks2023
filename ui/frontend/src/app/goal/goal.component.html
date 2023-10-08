@@ -1,3 +1,11 @@
-<mat-card class="goal-card">
+<mat-card matRipple (mouseup)="clickCard()" class="goal-card">
     <mat-card-title class="goal-card-title">{{goalTitle}}</mat-card-title>
+    <mat-card-content *ngIf="isExpanded" class="goal-card-content">
+        <div class="content-body">
+            <div class="goal-description">
+                <h3 class="goal-description-title">Description</h3>
+                <em class="goal-description-text">{{goalDescription}}</em>
+            </div>
+        </div>
+    </mat-card-content>
 </mat-card>

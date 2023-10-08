@@ -24,6 +24,7 @@ import backend.components.OpenAIClient;
 
 import java.util.Map;
 import java.util.List;
+import java.util.HashMap;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
