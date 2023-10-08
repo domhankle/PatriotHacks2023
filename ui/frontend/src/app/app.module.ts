@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AddGoalModule,
     HeaderModule,
     GoalTableModule,
     HttpClientModule,

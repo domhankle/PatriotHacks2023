@@ -23,13 +23,14 @@ import backend.components.Prompt;
 
 import java.util.Map;
 import java.util.List;
+import java.lang.Integer;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/goals")
 public class GoalController {
     private DynamoDbClient ddb;
-
+    private Integer counter;
     @Autowired
     public GoalController(){
         Region region = Region.US_EAST_1;
@@ -37,16 +38,19 @@ public class GoalController {
             .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
             .region(region)
             .build();   
+        this.counter = new Integer(0);
     }
 
     @PostMapping("/prompt")
     void processPrompt(@RequestBody Prompt prompt) {
-        System.out.println(prompt);
+        ++counter;
+        DynamoDB.putItemInTable(this.ddb, "Goals", counter.toString(), prompt.getTitle(), prompt.getDescription());
+        
     }
 
     @GetMapping("/all")
     ArrayList<Goal> getAll() {
-        ArrayList<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
+        List<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
         ArrayList<Goal> goals = new ArrayList<>();
 
         for(Map<String, AttributeValue> item : rawData) {

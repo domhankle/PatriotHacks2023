@@ -73,7 +73,7 @@ public class DynamoDB {
         }
     }
 
-    public static ArrayList<Map<String, AttributeValue>> scanItems(DynamoDbClient ddb, String tableName) {
+    public static List<Map<String, AttributeValue>> scanItems(DynamoDbClient ddb, String tableName) {
 
         try {
             ScanRequest request = ScanRequest.builder()
@@ -82,7 +82,7 @@ public class DynamoDB {
             
             ScanResponse response = ddb.scan(request);
 
-            return (ArrayList<Map<String, AttributeValue>>)response.items();
+            return response.items();
             
         }
         catch(DynamoDbException e)

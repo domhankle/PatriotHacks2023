@@ -1,7 +1,7 @@
-
+<app-add-goal (goalData)="handleGoalsEvent($event)"></app-add-goal>
 <div class="goal-table-component-container">
     <div class="goals-container" *ngFor="let goal of currentGoals">
-        <app-goal class="goal">
+        <app-goal class="goal" [goalTitle]="goal.title" [goalDescription]="goal.description">
 
         </app-goal>
     </div>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Goal } from '../goal/goal';
+import { GoalService } from '../goal.service';
+import { GoalComponent } from '../goal/goal.component';
 
 @Component({
   selector: 'app-goal-table',
@@ -9,12 +11,18 @@ import { Goal } from '../goal/goal';
 export class GoalTableComponent {
   currentGoals: Goal[];
 
-  constructor() {
+  constructor(@Inject(GoalService) public goalService: GoalService) {
     this.currentGoals = [];
-    let goal = {
-      title: 'Goal Title',
-      description: 'Goal description',
-      steps: [],
-    };
+  }
+
+  public handleGoalsEvent(eventData: Goal[]): void {
+    this.currentGoals = [];
+    eventData.forEach((goal) =>
+      this.currentGoals.push({
+        title: goal.title,
+        description: goal.description,
+        steps: [],
+      })
+    );
   }
 }
