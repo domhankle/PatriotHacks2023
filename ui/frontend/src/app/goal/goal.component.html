@@ -1,0 +1,14 @@
+<mat-card matRipple class="goal-card">
+    <mat-card-title (mouseup)="clickCard()" class="goal-card-title">{{goalTitle}}</mat-card-title>
+    <mat-card-content (mouseup)="clickCard()" *ngIf="isExpanded" class="goal-card-content">
+            <div class="goal-description">
+                <h3 class="goal-description-title">The Next Steps...</h3>
+                <ol class="goal-description-steps">
+                    <li class="step-listing" *ngFor="let step of goalSteps">{{step}}</li>
+                </ol>
+            </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="isExpanded" class="actions-footer">
+        <button mat-raised-button class="complete-button" color="primary" (click)="deleteGoal()">Complete</button>
+    </mat-card-actions>
+</mat-card>

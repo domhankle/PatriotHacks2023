@@ -1,0 +1,17 @@
+@echo off
+
+set AWS_DEFAULT_REGION=us-east-1
+set AWS_ACCESS_KEY_ID=ASIA5DREFSPA5VMDXWQW
+set AWS_SECRET_ACCESS_KEY=amPBRQpM6T9aO6L5cea29/glIDrfqoT6vdX/5fmn
+set AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEJj//////////wEaCXVzLWVhc3QtMSJHMEUCIQCxBQlqURk8I2CqDIrYilB+EKI5jqLDraxu4GqKle88qQIgEcSP5KJwKT0L0nAkcNwI3Wu/DqyI18bJq+eeyrkInW0qoAIIof//////////ARABGgw5MDA5NDUyNTMzMTMiDIj5w2Tkp7WquFap7Cr0AR08LUDunSAAoSTjLiLMrWAatfw0pqAIR1Be37eoZAObIHWKWOcnnIXz5VnYMch/mBYb3aSU+JtPkVegj2d7aIEt4rTkSNc6fJp0VTaMu7tb0yoUJ9K6G8FYsrJDO6YHJHCZKH4WiHuTd2yLZFOh3GL3jj+k6Cdg2gYJKoJakjD0ov7oDlgfOt7hDMt0VVPN+ZxE2fSIsWgUoz4KSI1ay64jcQe02DtdGDw3FOSTXUB4WCuD7LFttH1pQiWshZ0ag/q9xVqgoZQJiUPuuhoZ9ZZiH8l9MfX2THF49xr0MRT6UDyp1656rrFE25+8Aw9uA+tLfxAw0biJqQY6nQG4ByJkYmD44fCwJL6LavjnQ5mphqM2MrhYGmKfeib6y4Dc5qsA/EturFcWEotyhlhScesJP5OODAjCYpwDCivFWdhQ61HUf5rXS8SuQaRv+uXTPDP0KDwvZXC9GUbjR5Q7YuHdcc7+Nk/7QlkYdPmGBrLBWNGYaIrmNWPIAX7h2xhAxD2lo+Qf4U3glNhTcRaWC7Lr81eUreNTQopn
+
+rem Navigate to the Spring Boot project directory
+cd "backend"
+
+rem Start the Spring Boot application using Gradle
+start /min cmd /k "gradlew.bat bootRun"
+
+rem Open a new command prompt window and navigate to the Angular project directory
+cd "..\ui\frontend"
+start /min cmd /k "ng serve"
+

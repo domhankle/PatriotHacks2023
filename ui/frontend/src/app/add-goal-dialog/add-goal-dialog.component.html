@@ -1,0 +1,16 @@
+<h1 mat-dialog-title class="dialog-header">+ New Goal</h1>
+
+<div mat-dialog-content class="dialog-content-container">
+    <mat-form-field appearance="outline" class="title-text-input-container">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="prompt.title" placeholder="Enter your title...">
+    </mat-form-field>
+    <h2 class="subtitle">Enter a summary of the goal you wish to accomplish below...</h2>
+    <textarea [(ngModel)]="prompt.description" class="text-box"></textarea>
+</div>
+
+<div mat-dialog-actions class="dialog-action-buttons-container">
+    <button mat-button color="accent" class="cancel-button" (click)="cancelCreation()">Cancel</button>
+    <button mat-raised-button color="accent" class="submit-button" *ngIf="!spinnerActive" (click)="createNewGoal()">Submit</button>
+    <mat-spinner class="spinner" color="accent" *ngIf="spinnerActive"></mat-spinner>
+</div>
