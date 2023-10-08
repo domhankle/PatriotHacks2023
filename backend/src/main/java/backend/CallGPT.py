@@ -2,7 +2,7 @@ import openai
 
 # myscript.py
 def call_gpt(input):
-    api_key = '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'
+    api_key = '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'
 
     openai.api_key = api_key
     response = openai.ChatCompletion.create(

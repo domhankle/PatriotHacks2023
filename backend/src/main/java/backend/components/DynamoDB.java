@@ -21,12 +21,18 @@ public class DynamoDB {
 
     
 
-    public static void putItemInTable(DynamoDbClient ddb, String tableName, String id, String title, String advice)
-    {
+    public static void putItemInTable(DynamoDbClient ddb, String tableName, String id, String title, List<String> steps)
+    {   
         HashMap<String,AttributeValue> itemValues = new HashMap<>();
         itemValues.put("goal_id", AttributeValue.builder().s(id).build());
-        itemValues.put("advice", AttributeValue.builder().s(advice).build());
+        // itemValues.put("advice", AttributeValue.builder().s(advice).build());
         itemValues.put("title", AttributeValue.builder().s(title).build());
+
+        List<AttributeValue> attSteps = new ArrayList<>();
+        for (int i = 0; i < steps.size(); i++) {
+            attSteps.add(AttributeValue.builder().s(steps.get(i)).build());
+        }
+        itemValues.put("steps", AttributeValue.builder().l(attSteps).build());
 
 
         PutItemRequest request = PutItemRequest.builder()
@@ -48,7 +54,7 @@ public class DynamoDB {
         }
     }
 
-    public static Map<String, AttributeValue> getDynamoDBItem(DynamoDbClient ddb, String tableName, String id, String advice ) {
+    public static Map<String, AttributeValue> getDynamoDBItem(DynamoDbClient ddb, String tableName, String id, List<String> advice ) {
        
         HashMap<String,AttributeValue> keyToGet = new HashMap<>();
         keyToGet.put("goal_id", AttributeValue.builder()

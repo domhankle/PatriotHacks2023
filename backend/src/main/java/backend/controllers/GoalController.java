@@ -44,14 +44,16 @@ public class GoalController {
     @PostMapping("/prompt")
     void processPrompt(@RequestBody Prompt prompt) {
 
-        String result = OpenAIClient.callopenAI(prompt.getDescription());
-        int num = prompt.getTitle().hashCode();
-        String id = String.valueOf(num);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Write me a step by step numbered list on how I can achieve the following goal. (Please format your response so that each step begins with only a number): ");
+
+        String result = OpenAIClient.callopenAI(sb.append(prompt.getDescription()).toString());
+        String id = String.valueOf(prompt.getTitle().hashCode());
 
         
         Goal newGoal = new Goal(id, prompt.getTitle(), result);
         
-        DynamoDB.putItemInTable(this.ddb, "Goals", newGoal.getId(), newGoal.getTitle(), newGoal.getAdvice());
+        DynamoDB.putItemInTable(this.ddb, "Goals", newGoal.getId(), newGoal.getTitle(), newGoal.getSteps());
 
     }
 
