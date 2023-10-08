@@ -11,6 +11,8 @@ import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException;
 import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
+import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
@@ -96,6 +98,25 @@ public class DynamoDB {
             System.out.println(e);
             System.exit(1);
             return null;
+        }
+    }
+
+    public static void deleteDynamoDbItem(DynamoDbClient ddb, String tableName, String id) {
+        HashMap<String, AttributeValue> keyToGet = new HashMap<>();
+        keyToGet.put("goal_id", AttributeValue.builder()
+            .s(id)
+            .build());
+
+        DeleteItemRequest deleteReq = DeleteItemRequest.builder()
+            .tableName(tableName)
+            .key(keyToGet)
+            .build();
+
+        try {
+            ddb.deleteItem(deleteReq);
+        } catch (DynamoDbException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
         }
     }
 }
