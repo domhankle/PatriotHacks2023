@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class OpenAIClient {
     public static String callopenAI(String input) {
         try {
-            String pythonScript = "python3";
+            String pythonScript = "python";
             String scriptPath = ".\\src\\main\\java\\backend\\CallGPT.py";
 
             String[] command = {pythonScript, scriptPath, input};
