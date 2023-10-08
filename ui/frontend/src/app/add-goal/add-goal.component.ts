@@ -17,7 +17,9 @@ export class AddGoalComponent {
     @Inject(GoalService) private _goalService: GoalService
   ) {}
 
-  ngAfterViewInit() {}
+  public ngAfterViewInit(): void {
+    this.emitData();
+  }
 
   public openAddGoalDialog(): void {
     const dialogRef = this.dialogService.open(AddGoalDialogComponent, {
@@ -31,10 +33,8 @@ export class AddGoalComponent {
   }
 
   private async emitData(): Promise<void> {
-    this._goalService
-      .getAllGoals()
-      .subscribe((data) => {
-        this.goalData.emit(data);
-      });
+    this._goalService.getAllGoals().subscribe((data) => {
+      this.goalData.emit(data);
+    });
   }
 }

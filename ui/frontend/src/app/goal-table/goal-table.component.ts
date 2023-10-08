@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Goal } from '../goal/goal';
 import { GoalService } from '../goal.service';
-import { GoalComponent } from '../goal/goal.component';
 
 @Component({
   selector: 'app-goal-table',
@@ -11,7 +10,7 @@ import { GoalComponent } from '../goal/goal.component';
 export class GoalTableComponent {
   currentGoals: Goal[];
 
-  constructor(@Inject(GoalService) public goalService: GoalService) {
+  constructor(@Inject(GoalService) private _goalService: GoalService) {
     this.currentGoals = [];
   }
 
