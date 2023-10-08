@@ -1,12 +1,7 @@
 export interface Goal {
   id: String;
   title: String;
-  advice: String;
-  steps: GoalStep[];
-}
-
-export interface GoalStep {
-  description: String;
+  steps: String[];
 }
 
 export interface Prompt {

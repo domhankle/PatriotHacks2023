@@ -1,6 +1,6 @@
 <app-add-goal (goalData)="handleGoalsEvent($event)"></app-add-goal>
 <div class="goal-table-component-container">
-    <app-goal *ngFor="let goal of currentGoals" class="goal" [goalTitle]="goal.title" [goalDescription]="goal.advice">
+    <app-goal *ngFor="let goal of currentGoals" class="goal" [goalTitle]="goal.title" [goalSteps]="goal.steps" [goalId]="goal.id">
     </app-goal>
     <div *ngIf="currentGoals.length === 0" class="no-goals-text-container">
         <em class="no-goals-text">You Have No Goals Right Now</em>

@@ -17,12 +17,10 @@ export class GoalTableComponent {
   public handleGoalsEvent(eventData: Goal[]): void {
     this.currentGoals = [];
     eventData.forEach((goal) => {
-      console.log(goal);
       this.currentGoals.push({
         id: goal.id,
         title: goal.title,
-        advice: goal.advice,
-        steps: [],
+        steps: goal.steps,
       });
     });
   }

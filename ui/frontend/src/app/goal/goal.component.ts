@@ -9,23 +9,20 @@ import { GoalService } from '../goal.service';
 })
 export class GoalComponent {
   @Input() goalTitle: String;
-  @Input() goalDescription: String;
   @Input() goalId?: String;
   @Input() goalSteps?: String[];
   isExpanded = false;
   constructor(@Inject(GoalService) private _goalService: GoalService) {
     this.goalTitle = 'Goal Title';
-    this.goalDescription = 'Goal Description';
   }
 
   public deleteCard(): void {}
 
   public clickCard(): void {
     this.isExpanded = this.isExpanded ? false : true;
-    console.log(this.goalDescription);
   }
 
   public deleteGoal(): void {
-    this._goalService
+    this._goalService;
   }
 }

@@ -20,6 +20,12 @@
         background-color: whitesmoke;
         padding: 10px;
         border-radius: 1%;
+
+        .goal-description-steps{
+            .step-listing{
+                margin-bottom: 8px;
+            }
+        }
     }
     .goal-card-content{
         max-width: 100%;
