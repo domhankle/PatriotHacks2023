@@ -18,6 +18,7 @@ export class GoalTableComponent {
     this.currentGoals = [];
     eventData.forEach((goal) =>
       this.currentGoals.push({
+        id: goal.id,
         title: goal.title,
         description: goal.description,
         steps: [],

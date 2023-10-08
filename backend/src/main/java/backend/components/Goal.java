@@ -17,6 +17,7 @@ public class Goal {
         this.title = title;
         this.advice = advice;
         this.steps = new ArrayList<String>();
+        this.processSteps();
     }
 
     public Goal(Map<String, AttributeValue> item) {
@@ -37,7 +38,10 @@ public class Goal {
     public String getId() {
         return id;
     }
-
+    
+    public String getAdvice(){
+        return this.advice;
+    }
     public ArrayList<String> getSteps() {
         return steps;
     }
@@ -50,11 +54,17 @@ public class Goal {
         this.id = id;
     }
 
-    private boolean processSteps() {
-        return false;
+    private void processSteps() {
+        String[] parts = advice.split("\\d+");
+
+        for(String part : parts)
+        {
+            this.steps.add(part);
+        }
+
     }
 
-
+    
 
 
 }

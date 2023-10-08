@@ -1,4 +1,5 @@
 export interface Goal {
+  id: String;
   title: String;
   description: String;
   steps: GoalStep[];

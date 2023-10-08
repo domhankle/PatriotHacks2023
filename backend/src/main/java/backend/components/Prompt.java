@@ -28,4 +28,5 @@ public class Prompt {
         sb.append(this.title).append("\n\n").append(this.description);
         return sb.toString();
     }
+
 }

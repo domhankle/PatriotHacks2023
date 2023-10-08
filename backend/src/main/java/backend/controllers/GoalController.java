@@ -40,12 +40,18 @@ public class GoalController {
             .region(region)
             .build();   
     }
-
+    
     @PostMapping("/prompt")
     void processPrompt(@RequestBody Prompt prompt) {
 
-        String result = OpenAIClient.callopenAI("Count to ten in latin");
-        System.out.println(result);
+        String result = OpenAIClient.callopenAI(prompt.getDescription());
+        int num = prompt.getTitle().hashCode();
+        String id = String.valueOf(num);
+
+        
+        Goal newGoal = new Goal(id, prompt.getTitle(), result);
+        
+        DynamoDB.putItemInTable(this.ddb, "Goals", newGoal.getId(), newGoal.getTitle(), newGoal.getAdvice());
 
     }
 
