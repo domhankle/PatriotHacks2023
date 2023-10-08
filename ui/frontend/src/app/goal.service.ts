@@ -8,9 +8,24 @@ import { Goal, Prompt } from './goal/goal';
 })
 export class GoalService {
   private apiURL = 'http://localhost:8080/goals';
-  constructor(private http: HttpClient) {}
+  private currentGoals: Goal[];
+  constructor(private http: HttpClient) {
+    this.currentGoals = [];
+  }
 
   public sendPrompt(prompt: Prompt): Observable<any> {
-    return this.http.post<Goal>(`${this.apiURL}/prompt`, prompt);
+    return this.http.post<Prompt>(`${this.apiURL}/prompt`, prompt);
+  }
+
+  public getAllGoals(): Observable<any[]> {
+    return this.http.get<Goal[]>(`${this.apiURL}/all`);
+  }
+
+  public setCurrentGoals(toSet: Goal[]): void {
+    this.currentGoals = toSet;
+  }
+
+  public getCurrentGoals(): Goal[] {
+    return this.currentGoals;
   }
 }

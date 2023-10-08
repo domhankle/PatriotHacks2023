@@ -22,11 +22,9 @@ export class AddGoalDialogComponent {
   }
 
   public async createNewGoal(): Promise<void> {
-    console.log(this.prompt.title);
-    console.log(this.prompt.description);
     await this._goalService.sendPrompt(this.prompt).subscribe(
-      (response) => {
-        this._dialogRef.close(this.prompt);
+      () => {
+        this._dialogRef.close();
       },
       (error) => {
         console.log(error);

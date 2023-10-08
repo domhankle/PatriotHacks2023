@@ -12,5 +12,6 @@ public class CorsConfig {
     
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/goals/prompt").allowedOrigins("http://localhost:4200").allowedMethods("GET", "PUT", "DELETE","POST").allowCredentials(true);
+        registry.addMapping("/goals/all").allowedOrigins("http://localhost:4200").allowedMethods("GET","PUT","DELETE","POST").allowCredentials(true);
     }
 }
