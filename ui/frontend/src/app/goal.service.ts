@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Goal, Prompt } from './goal/goal';
 
@@ -27,5 +27,10 @@ export class GoalService {
 
   public getCurrentGoals(): Goal[] {
     return this.currentGoals;
+  }
+
+  public deleteGoal(id: String): Observable<any> {
+    const params = new HttpParams().set('id', id.toString());
+    return this.http.delete<Goal>(`${this.apiURL}`, { params });
   }
 }
