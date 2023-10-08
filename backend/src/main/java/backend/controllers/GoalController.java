@@ -17,9 +17,18 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.*;
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
+import com.theokanning.openai.completion.chat.ChatMessageRole;
+import com.theokanning.openai.service.OpenAiService;
+import com.theokanning.openai.completion.CompletionRequest;
+
 import backend.components.DynamoDB;
 import backend.components.Goal;
 import backend.components.Prompt;
+
+import java.util.Map;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -37,14 +46,22 @@ public class GoalController {
     }
 
     @PostMapping("/prompt")
-    void processPrompt(@RequestBody String prompt) {
-        DynamoDB.putItemInTable(this.ddb, "Goals", "1", prompt);
+    void processPrompt(@RequestBody Prompt prompt) {
+
+
+        OpenAiService service = new OpenAiService("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");
+        CompletionRequest completionRequest = CompletionRequest.builder()
+            .prompt("Somebody once told me the world is gonna roll me")
+            .model("gpt-3.5-turbo")
+            .n(1)
+            .build();
+        service.createCompletion(completionRequest).getChoices().forEach(System.out::println);
     }
 
     @GetMapping("/all")
-    List<Goal> getAll() {
-        List<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
-        List<Goal> goals = new List<>();
+    ArrayList<Goal> getAll() {
+        ArrayList<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
+        ArrayList<Goal> goals = new ArrayList<>();
 
         for(Map<String, AttributeValue> item : rawData) {
             goals.add(new Goal(item));

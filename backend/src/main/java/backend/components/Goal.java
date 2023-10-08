@@ -3,6 +3,8 @@ package backend.components;
 import java.util.ArrayList;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
+import java.util.Map;
+
 public class Goal {
     
     private String id;
@@ -18,9 +20,9 @@ public class Goal {
     }
 
     public Goal(Map<String, AttributeValue> item) {
-        this.id = item.get("goal_id");
-        this.title = item.get("title");
-        this.advice = item.get("advice");
+        this.id = item.get("goal_id").s();
+        this.title = item.get("title").s();
+        this.advice = item.get("advice").s();
         this.steps = new ArrayList<String>();
     }
 

@@ -6,7 +6,7 @@
         <input matInput [(ngModel)]="prompt.title" placeholder="Enter your title...">
     </mat-form-field>
     <h2 class="subtitle">Enter a summary of the goal you wish to accomplish below...</h2>
-    <textarea class="text-box"></textarea>
+    <textarea [(ngModel)]="prompt.description" class="text-box"></textarea>
 </div>
 
 <div mat-dialog-actions class="dialog-action-buttons-container">
