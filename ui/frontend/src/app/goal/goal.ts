@@ -7,3 +7,8 @@ export interface Goal {
 export interface GoalStep {
   description: String;
 }
+
+export interface Prompt {
+  title: String;
+  description: String;
+}

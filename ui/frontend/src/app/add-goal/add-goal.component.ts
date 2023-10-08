@@ -10,13 +10,13 @@ import { AddGoalDialogComponent } from '../add-goal-dialog/add-goal-dialog.compo
 export class AddGoalComponent {
   constructor(private dialogService: MatDialog) {}
 
+  ngAfterViewInit() {}
   public openAddGoalDialog(): void {
     const dialogRef = this.dialogService.open(AddGoalDialogComponent, {
+      disableClose: true,
       data: {},
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }

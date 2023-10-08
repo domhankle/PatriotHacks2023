@@ -1,6 +1,10 @@
 <h1 mat-dialog-title class="dialog-header">+ New Goal</h1>
 
 <div mat-dialog-content class="dialog-content-container">
+    <mat-form-field appearance="outline" class="title-text-input-container">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="prompt.title" placeholder="Enter your title...">
+    </mat-form-field>
     <h2 class="subtitle">Enter a summary of the goal you wish to accomplish below...</h2>
     <textarea class="text-box"></textarea>
 </div>

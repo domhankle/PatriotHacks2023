@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { GoalService } from '../goal.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Prompt } from '../goal/goal';
 
 @Component({
   selector: 'app-add-goal-dialog',
@@ -8,19 +9,24 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-goal-dialog.component.css'],
 })
 export class AddGoalDialogComponent {
-  prompt: String;
+  prompt: Prompt;
   constructor(
     @Inject(GoalService) private _goalService: GoalService,
     @Inject(MatDialogRef<AddGoalDialogComponent>)
     private _dialogRef: MatDialogRef<AddGoalDialogComponent>
   ) {
-    this.prompt = 'SEXY MAN';
+    this.prompt = {
+      title: '',
+      description: 'joe',
+    };
   }
 
   public async createNewGoal(): Promise<void> {
-    await this._goalService.addGoal(this.prompt).subscribe(
+    console.log(this.prompt.title);
+    console.log(this.prompt.description);
+    await this._goalService.sendPrompt(this.prompt.description).subscribe(
       (response) => {
-        this._dialogRef.close(response);
+        this._dialogRef.close(this.prompt);
       },
       (error) => {
         console.log(error);

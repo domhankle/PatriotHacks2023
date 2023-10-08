@@ -1,4 +1,7 @@
-
+    .title-text-input-container{
+        margin-top: 5px;
+        width: 100%;
+    }
     .dialog-header{
         background-color: #ff4081;
         color: white;
@@ -22,6 +25,6 @@
             width: 100%;
             min-height: 200px;
             font-size: 20px;
-            outline-color: black;
+            outline-color: rgba(85, 16, 164, 0.8)
         }
     }

@@ -10,7 +10,7 @@ export class GoalService {
   private apiURL = 'http://localhost:8080/goals';
   constructor(private http: HttpClient) {}
 
-  public addGoal(prompt: String): Observable<any> {
+  public sendPrompt(prompt: String): Observable<any> {
     return this.http.post<Goal>(`${this.apiURL}/prompt`, prompt);
   }
 }
