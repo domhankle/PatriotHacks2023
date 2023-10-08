@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddGoalDialogComponent } from '../add-goal-dialog/add-goal-dialog.component';
 import { GoalService } from '../goal.service';
 import { Goal } from '../goal/goal';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-add-goal',
