@@ -17,7 +17,7 @@ export class AddGoalDialogComponent {
   ) {
     this.prompt = {
       title: '',
-      description: 'joe',
+      description: '',
     };
   }
 

@@ -14,6 +14,8 @@ import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DynamoDB {
 
@@ -67,20 +69,27 @@ public class DynamoDB {
         } catch (DynamoDbException e) {
             System.err.println(e.getMessage());
             System.exit(1);
+            return null;
         }
     }
 
     public static ArrayList<Map<String, AttributeValue>> scanItems(DynamoDbClient ddb, String tableName) {
 
         try {
-            ScanRequest ScanRequest = ScanRequest.builder()
+            ScanRequest request = ScanRequest.builder()
                 .tableName(tableName)
                 .build();
             
-            ScanResponse response = ddb.scan(ScanRequest);
+            ScanResponse response = ddb.scan(request);
 
-            return response.items();
+            return (ArrayList<Map<String, AttributeValue>>)response.items();
             
+        }
+        catch(DynamoDbException e)
+        {
+            System.out.println(e);
+            System.exit(1);
+            return null;
         }
     }
 }

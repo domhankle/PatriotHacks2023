@@ -20,4 +20,12 @@ public class Prompt {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.title).append("\n\n").append(this.description);
+        return sb.toString();
+    }
 }

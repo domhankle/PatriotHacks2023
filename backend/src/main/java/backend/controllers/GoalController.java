@@ -21,6 +21,9 @@ import backend.components.DynamoDB;
 import backend.components.Goal;
 import backend.components.Prompt;
 
+import java.util.Map;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/goals")
@@ -37,14 +40,14 @@ public class GoalController {
     }
 
     @PostMapping("/prompt")
-    void processPrompt(@RequestBody String prompt) {
-        DynamoDB.putItemInTable(this.ddb, "Goals", "1", prompt);
+    void processPrompt(@RequestBody Prompt prompt) {
+        System.out.println(prompt);
     }
 
     @GetMapping("/all")
-    List<Goal> getAll() {
-        List<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
-        List<Goal> goals = new List<>();
+    ArrayList<Goal> getAll() {
+        ArrayList<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
+        ArrayList<Goal> goals = new ArrayList<>();
 
         for(Map<String, AttributeValue> item : rawData) {
             goals.add(new Goal(item));
