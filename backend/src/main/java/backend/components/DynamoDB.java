@@ -9,6 +9,8 @@ import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.PutItemResponse;
 import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException;
 import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
+import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
+import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
@@ -17,11 +19,12 @@ public class DynamoDB {
 
     
 
-    public static void putItemInTable(DynamoDbClient ddb, String tableName, String id, String prompt)
+    public static void putItemInTable(DynamoDbClient ddb, String tableName, String id, String title, String advice)
     {
         HashMap<String,AttributeValue> itemValues = new HashMap<>();
         itemValues.put("goal_id", AttributeValue.builder().s(id).build());
-        itemValues.put("prompt", AttributeValue.builder().s(prompt).build());
+        itemValues.put("advice", AttributeValue.builder().s(advice).build());
+        itemValues.put("title", AttributeValue.builder().s(title).build());
 
 
         PutItemRequest request = PutItemRequest.builder()
@@ -43,7 +46,7 @@ public class DynamoDB {
         }
     }
 
-    public static void getDynamoDBItem(DynamoDbClient ddb, String tableName, String id, String prompt ) {
+    public static Map<String, AttributeValue> getDynamoDBItem(DynamoDbClient ddb, String tableName, String id, String advice ) {
        
         HashMap<String,AttributeValue> keyToGet = new HashMap<>();
         keyToGet.put("goal_id", AttributeValue.builder()
@@ -58,19 +61,26 @@ public class DynamoDB {
         try {
             // If there is no matching item, GetItem does not return any data.
             Map<String,AttributeValue> returnedItem = ddb.getItem(request).item();
-            if (returnedItem.isEmpty())
-                System.out.format("No item found with the key %s!\n", id);
-            else {
-                Set<String> keys = returnedItem.keySet();
-                System.out.println("Amazon DynamoDB table attributes: \n");
-                for (String key1 : keys) {
-                    System.out.format("%s: %s\n", key1, returnedItem.get(key1).toString());
-                }
-            }
+            
+            return returnedItem;
 
         } catch (DynamoDbException e) {
             System.err.println(e.getMessage());
             System.exit(1);
+        }
+    }
+
+    public static ArrayList<Map<String, AttributeValue>> scanItems(DynamoDbClient ddb, String tableName) {
+
+        try {
+            ScanRequest ScanRequest = ScanRequest.builder()
+                .tableName(tableName)
+                .build();
+            
+            ScanResponse response = ddb.scan(ScanRequest);
+
+            return response.items();
+            
         }
     }
 }

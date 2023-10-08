@@ -18,6 +18,8 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 
 import backend.components.DynamoDB;
+import backend.components.Goal;
+import backend.components.Prompt;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -37,6 +39,18 @@ public class GoalController {
     @PostMapping("/prompt")
     void processPrompt(@RequestBody String prompt) {
         DynamoDB.putItemInTable(this.ddb, "Goals", "1", prompt);
+    }
+
+    @GetMapping("/all")
+    List<Goal> getAll() {
+        List<Map<String, AttributeValue>> rawData = DynamoDB.scanItems(ddb, "Goals");
+        List<Goal> goals = new List<>();
+
+        for(Map<String, AttributeValue> item : rawData) {
+            goals.add(new Goal(item));
+        }
+
+        return goals;
     }
     
 }
