@@ -27,8 +27,6 @@ dependencies {
 	implementation 'software.amazon.awssdk:dynamodb'
     implementation 'software.amazon.awssdk:aws-sdk-java:2.20.45'
 	implementation 'com.amazonaws:aws-java-sdk:1.12.565'
-
-	implementation 'com.theokanning.openai-gpt3-java:service:0.16.0'
 }
 
 

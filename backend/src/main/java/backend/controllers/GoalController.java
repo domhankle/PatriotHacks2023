@@ -17,12 +17,6 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.*;
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 
-import com.theokanning.openai.completion.chat.ChatCompletionRequest;
-import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.completion.chat.ChatMessageRole;
-import com.theokanning.openai.service.OpenAiService;
-import com.theokanning.openai.completion.CompletionRequest;
-
 import backend.components.DynamoDB;
 import backend.components.Goal;
 import backend.components.Prompt;
@@ -30,6 +24,7 @@ import backend.components.Prompt;
 import java.util.Map;
 import java.util.List;
 import java.lang.Integer;
+import java.util.HashMap;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -51,20 +46,7 @@ public class GoalController {
     void processPrompt(@RequestBody Prompt prompt) {
         ++counter;
         DynamoDB.putItemInTable(this.ddb, "Goals", counter.toString(), prompt.getTitle(), prompt.getDescription());
-        
-<<<<<<< HEAD
 
-
-        OpenAiService service = new OpenAiService("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");
-        CompletionRequest completionRequest = CompletionRequest.builder()
-            .prompt("Somebody once told me the world is gonna roll me")
-            .model("gpt-3.5-turbo")
-            .n(1)
-            .build();
-        service.createCompletion(completionRequest).getChoices().forEach(System.out::println);
-=======
-        System.out.println(prompt);
->>>>>>> 448a858b8e28cf912b815078bedd37504e36c282
     }
 
     @GetMapping("/all")
